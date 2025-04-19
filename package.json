@@ -1,0 +1,9 @@
+{
+  "name": "htb",
+  "version": "1.0.0",
+  "description": "HTML to BBCode for NationStates.net",
+  "main": "HTB.js",
+  "scripts": {
+    "start": "node HTB.js"
+  }
+}
