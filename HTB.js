@@ -61,6 +61,7 @@ const BBCODE_MAP = [
 	// Quote
 	["quote", "quote"],
 	// Size
+	["title", "size=180"],
 	["h1", "size=150"],
 	["h2", "size=135"],
 	["h3", "size=120"],
