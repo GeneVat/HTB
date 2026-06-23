@@ -3,11 +3,14 @@ name = "HTB"
 version = "0.1.0"
 edition = "2024"
 [[bin]]
-name = "Formater"
-path = "src/Formater.rs"
+name = "Step1"
+path = "src/Step1.rs"
 [[bin]]
-name = "Rewriter"
-path = "src/Rewriter.rs"
+name = "Step2"
+path = "src/Step2.rs"
+[[bin]]
+name = "Step3"
+path = "src/Step3.rs"
 
 [dependencies]
 regex = "1.12.4"

@@ -11,7 +11,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     let lines = process_element(root, 0, &[]);
     let output = lines.join("\n");
-    fs::write("formatted.temp", output)?;
+    fs::write("steps/step1.temp", output)?;
     Ok(())
 }
 

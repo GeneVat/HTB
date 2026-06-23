@@ -5,7 +5,7 @@
         [header]:
             [h1] : Welcome to the Nation of Fenio
         [main]:
-            [p] style="color:blue; color:green;" : The Nation of Fenio greets all visitors. This simple homepage provides a brief introduction to our land and people.
+            [p] style="color:blue; color:red;" : The Nation of Fenio greets all visitors. This simple homepage provides a brief introduction to our land and people.
             [h2] style="color:blue;" : About Fenio
             [p] style="color:blue;" : Fenio is a fictional nation known for its rich culture, peaceful landscapes, and vibrant communities.
             [h2] style="color:blue;" : Contact
