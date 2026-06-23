@@ -2,6 +2,13 @@
 name = "HTB"
 version = "0.1.0"
 edition = "2024"
+[[bin]]
+name = "Formater"
+path = "src/Formater.rs"
+[[bin]]
+name = "Rewriter"
+path = "src/Rewriter.rs"
 
 [dependencies]
 regex = "1.12.4"
+scraper = "0.27.0"
