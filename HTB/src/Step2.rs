@@ -4,14 +4,64 @@ use std::{error::Error, fs};
 fn main() -> Result<(), Box<dyn Error>> {
     let text = fs::read_to_string("steps/step1.temp")?;
 
-    let re = Regex::new(r"(?im)^(?P<indent>\s*)(?:-\s*)?(?:\[(?P<r>[a-z0-9]+)\]\s*)?-\s*(?P<r2>[a-z0-9]+)(?P<rest>.*)$")?;
+    let mut out = text;
 
-    let out = re.replace_all(&text, |caps: &regex::Captures| {
-        let indent = &caps["indent"];
-        let r = if caps.name("r").is_some() { &caps["r"] } else { &caps["r2"] };
-        format!("{}[{}]{}", indent, r, &caps["rest"])
-    });
+    // 1) Rewrite style="k:v; k2:v2" -> [k=v][k2=v2]
+    let style_re = Regex::new(r#"(?i)style="([^"]*)""#)?;
+    out = style_re
+        .replace_all(&out, |caps: &regex::Captures| {
+            let raw = caps.get(1).map(|m| m.as_str()).unwrap_or("");
 
-    fs::write("steps/step2.temp", out.to_string())?;
+            let items = raw
+                .split(';')
+                .map(str::trim)
+                .filter(|s| !s.is_empty())
+                .filter_map(|pair| {
+                    let mut it = pair.splitn(2, ':');
+                    let key = it.next()?.trim();
+                    let val = it.next()?.trim();
+                    if key.is_empty() || val.is_empty() {
+                        None
+                    } else {
+                        Some((key, val))
+                    }
+                });
+
+            let mut res = String::new();
+            for (k, v) in items {
+                res.push('[');
+                res.push_str(k);
+                res.push('=');
+                res.push_str(v);
+                res.push(']');
+            }
+            res
+        })
+        .into_owned();
+
+    // 2) Rewrite list item format -> [tag]rest
+    // Matches: indent (optional "- " or "-") (optional [r] ) "- " r2 rest
+    let list_re = Regex::new(
+        r#"(?im)^(?P<indent>\s*)(?:-\s*)?(?:\[(?P<r>[a-z0-9]+)\]\s*)?-\s*(?P<r2>[a-z0-9]+)(?P<rest>.*)$"#,
+    )?;
+    out = list_re
+        .replace_all(&out, |caps: &regex::Captures| {
+            let indent = &caps["indent"];
+            let r = if caps.name("r").is_some() {
+                &caps["r"]
+            } else {
+                &caps["r2"]
+            };
+            format!("{}[{}]{}", indent, r, &caps["rest"])
+        })
+        .into_owned();
+
+    // 3) Cleanup
+    out = out
+        .replace(" : ", " ")
+        .replace(": ", " ")
+        .replace(':', "");
+
+    fs::write("steps/step2.temp", out)?;
     Ok(())
 }
