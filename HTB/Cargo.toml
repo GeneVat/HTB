@@ -8,6 +8,9 @@ path = "src/Step1.rs"
 [[bin]]
 name = "Step2"
 path = "src/Step2.rs"
+[[bin]]
+name = "Step3"
+path = "src/Step3.rs"
 
 [dependencies]
 regex = "1.12.4"
