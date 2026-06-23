@@ -1,6 +1,4 @@
 - html:
-    - head
-    - body : - html:
     - head - title : Nation of Fenia
     - body:
         - header - h1 : Welcome to the Nation of Fenio
