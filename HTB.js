@@ -14,75 +14,58 @@ const logInfo = (msg) => console.log(`\x1b[34m${msg}\x1b[0m`);
 const BBCODE_MAP = [
 	// [htmlTag, bbcodeTag]
 	// Floating
-	["float", "float"],
+codes.insert("float", "float");
 	// Alignment
-	["align", "align"],
+codes.insert("align", "align");
 	// Indentation
-	["tab", "tab"],
+codes.insert("tab", "tab");
 	// Box
-	["box", "box"],
+codes.insert("box", "box");
 	// Sidebar
-	["sidebar", "sidebar"],
-	["blockquote", "sidebar"],
+codes.insert("sidebar", "sidebar");
+codes.insert("blockquote", "sidebar");
 	// Bold
-	["b", "b"],
-	["strong", "b"],
+codes.insert("b", "b");
+codes.insert("strong", "b");
 	// Italic
-	["i", "i"],
-	["em", "i"],
+codes.insert("i", "i");
+codes.insert("em", "i");
 	// Underline
-	["u", "u"],
+codes.insert("u", "u");
 	// Superscript
-	["sup", "sup"],
+codes.insert("sup", "sup");
 	// Subscript
-	["sub", "sub"],
+codes.insert("sub", "sub");
 	// Strike
-	["strike", "strike"],
-	["del", "strike"],
-	["s", "strike"],
+codes.insert("strike", "strike");
+codes.insert("del", "strike");
+codes.insert("s", "strike");
 	// Unformatted Text
-	["pre", "pre"],
+codes.insert("pre", "pre");
 	// Code (Forum Only)
-	["code", "code"],
+codes.insert("code", "code");
 	// Horizontal Ruler
-	["hr", "hr"],
+codes.insert("hr", "hr");
 	// Links
-	["a", "url"],
+codes.insert("a", "url");
 	// Anchors
-	["anchor", "anchor"],
+codes.insert("anchor", "anchor");
 	// Nations
-	["nation", "nation"],
+codes.insert("nation", "nation");
 	// Regions
-	["region", "region"],
+codes.insert("region", "region");
 	// WA Proposal
-	["proposal", "proposal"],
+codes.insert("proposal", "proposal");
 	// WA Resolution
-	["resolution", "resolution"],
+codes.insert("resolution", "resolution");
 	// Quote
-	["quote", "quote"],
+codes.insert("quote", "quote");
 	// Size
-	["title", "size=180"],
-	["h1", "size=150"],
-	["h2", "size=135"],
-	["h3", "size=120"],
-	["h4", "size=105"],
-	["h5", "size=90"],
-	["p", "size=75"],
-	// Coloration
-	["color", "color"],
-	["background", "background"],
-	["background-block", "background-block"],
-	// Spoilers
-	["spoiler", "spoiler"],
-	// Lists
-	["ul", "list"],
-	["ol", "list"],
-	["li", "*"],
-	// Tables
-	["table", "table"],
-	["tr", "tr"],
-	["td", "td"],
-	["th", "td"],
+codes.insert("title", "size=180");
+
+codes.insert("h1", "size=150");
+
+
 ];
 
 // Simple HTML to BBCode converter (expand as needed)
@@ -95,7 +78,7 @@ function htmlToBBCode(html) {
 		const openTag = new RegExp(`<${htmlTag}\\b(\\s[^>]*)?>`, "gi");
 		const closeTag = new RegExp(`</${htmlTag}\\b>`, "gi");
 		// Add support for id="*" -> [tag=*]
-		const openTagWithId = new RegExp(`<${htmlTag}\\b([^>]*)id=["']([^"']+)["']([^>]*)>`, "gi");
+		const openTagWithId = new RegExp(`<${htmlTag}\\b([^>]*)id=("']([^"']+)("']([^>]*)>`, "gi");
 
 		if (bbTag === "*") {
 			// List item: [*]content
@@ -107,10 +90,10 @@ function htmlToBBCode(html) {
 			output = output.replace(closeTag, "[/size]");
 		} else if (bbTag === "img") {
 			// [img]src[/img]
-			output = output.replace(/<img\b[^>]*src=["']([^"']+)["'][^>]*>/gi, "[img]$1[/img]");
+			output = output.replace(/<img\b[^>]*src=("']([^"']+)("'][^>]*>/gi, "[img]$1[/img]");
 		} else if (bbTag === "url") {
 			// [url=href]text[/url]
-			output = output.replace(/<a\b[^>]*href=["']([^"']+)["'][^>]*>(.*?)<\/a>/gi, "[url=$1]$2[/url]");
+			output = output.replace(/<a\b[^>]*href=("']([^"']+)("'][^>]*>(.*?)<\/a>/gi, "[url=$1]$2[/url]");
 		} else if (bbTag === "hr") {
 			output = output.replace(openTag, "[hr]");
 			output = output.replace(closeTag, "");
