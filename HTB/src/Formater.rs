@@ -52,37 +52,6 @@ fn process_element(el: ElementRef, indent: usize, inherited: &[(String, String)]
         return vec![line];
     }
 
-    // Case 2: Exactly one element child, no text siblings, and that child is a leaf.
-    // Collapse into a single line: "Parent - Child : text".
-    if element_children.len() == 1 && text_nodes.is_empty() {
-        let child = &element_children[0];
-        let child_has_element_children = child
-            .children()
-            .any(|n| n.value().as_element().is_some());
-        if !child_has_element_children {
-            // Child is a leaf – collapse.
-            let child_text = child.text().collect::<String>().trim().to_string();
-            let child_tag = child.value().name();
-            // Attributes go on the child (the leaf).
-            let attrs_str = if merged_attrs.is_empty() {
-                String::new()
-            } else {
-                let attr_string = merged_attrs
-                    .iter()
-                    .map(|(k, v)| format!("{}=\"{}\"", k, v))
-                    .collect::<Vec<_>>()
-                    .join(" ");
-                format!("[{}]", attr_string)
-            };
-            let line = if child_text.is_empty() {
-                format!("{}- {} - {}{} :", " ".repeat(indent), formatted_tag, child_tag, attrs_str)
-            } else {
-                format!("{}- {} - {}{} : {}", " ".repeat(indent), formatted_tag, child_tag, attrs_str, child_text)
-            };
-            return vec![line];
-        }
-    }
-
     // Case 3: Container (multiple children, or single child that is not a leaf).
     // Output the container without attributes, then process each child with the merged attributes.
     let mut lines = vec![format!("{}- {}:", " ".repeat(indent), formatted_tag)];

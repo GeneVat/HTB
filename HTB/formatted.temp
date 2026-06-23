@@ -1,7 +1,9 @@
 - html:
-    - head - title : Nation of Fenia
+    - head:
+        - title : Nation of Fenia
     - body:
-        - header - h1 : Welcome to the Nation of Fenio
+        - header:
+            - h1 : Welcome to the Nation of Fenio
         - main:
             - p style="color:blue; color:green;" : The Nation of Fenio greets all visitors. This simple homepage provides a brief introduction to our land and people.
             - h2 style="color:blue;" : About Fenio
