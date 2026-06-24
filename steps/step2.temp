@@ -1,0 +1,13 @@
+[html]
+    [head]
+    [body]
+        [test] Hi
+        [title] Nation of Fenia
+        [header]
+            [h1] Welcome to the Nation of Fenio
+        [main]
+            [p] [color=blue][color=green] The Nation of Fenio greets all visitors. This simple homepage provides a brief introduction to our land and people.
+            [h2] [color=blue] About Fenio
+            [p] [color=blue] Fenio is a fictional nation known for its rich culture, peaceful landscapes, and vibrant communities.
+            [h2] [color=blue] Contact
+            [p] [color=blue] For inquiries, please reach out to the Fenio Information Office.
