@@ -1,19 +1,19 @@
-[html]
-    [head]
+
+    
         [meta] charset="UTF-8"
 [/meta]
         [meta] content="width=device-width, initial-scale=1.0" name="viewport"
 [/meta]
-        [title] My First HTML Website
-[/title]
-[/head]
-    [body]
-        [header]
-            [h1] Welcome to My Website
-[/h1]
-            [p] A simple HTML template example
-[/p]
-[/header]
+        [size=180] My First HTML Website
+[/size]
+
+    
+        
+            [size=160] Welcome to My Website
+[/size]
+             A simple HTML template example
+
+
         [nav]
             [a] href="#about" About
 [/a]
@@ -22,21 +22,21 @@
             [a] href="#contact" Contact
 [/a]
 [/nav]
-        [main]
+        
             [section]
-                [h2] id="about" About Us
-[/h2]
-                [p]
+                [size=140] id="about" About Us
+[/size]
+                
                     [strong] id="about" HTML5
 [/strong]
                     [This] is a live example of a basic webpage built using
 [/This]
                     - . You can use this block to introduce yourself, your business, or your project.
-[/p]
+
 [/section]
             [section]
-                [h2] id="services" Our Features
-[/h2]
+                [size=140] id="services" Our Features
+[/size]
                 [ul]
                     [li] id="services" Clean and organized semantic structure.
 [/li]
@@ -47,19 +47,19 @@
 [/ul]
 [/section]
             [section]
-                [h2] id="contact" Contact
-[/h2]
-                [p]
+                [size=140] id="contact" Contact
+[/size]
+                
                     [a] href="mailtoexample@email.com" id="contact" example@email.com
 [/a]
                     [Have] questions? Reach out directly via email at
 [/Have]
-[/p]
+
 [/section]
-[/main]
+
         [footer]
-            [p] © 2026 My Clean Website. All rights reserved.
-[/p]
+             © 2026 My Clean Website. All rights reserved.
+
 [/footer]
-[/body]
-[/html]
+
+

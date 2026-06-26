@@ -14,7 +14,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let mut stack: Vec<String> = Vec::new();
     let mut out = String::new();
-    let mut prev_indent = 0usize;
 
     for line in input.lines() {
         let cur_indent = indent_level(line);
@@ -97,7 +96,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
 
         out.push('\n');
-        prev_indent = cur_indent;
     }
 
     // Close anything still open at end of file (this should be minimal now).

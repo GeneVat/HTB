@@ -4,7 +4,7 @@ use std::{error::Error, fs};
 fn main() -> Result<(), Box<dyn Error>> {
     let text = fs::read_to_string("steps/step1.temp")?;
 
-    let mut out = text;
+    let mut out: String = text;
 
     // 1) Rewrite style="k:v; k2:v2" -> [k=v][k2=v2]
     let style_re = Regex::new(r#"(?i)style="([^"]*)""#)?;
