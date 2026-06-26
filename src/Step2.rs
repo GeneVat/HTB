@@ -7,25 +7,37 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut out: String = text;
 
     // 1) Rewrite style="k:v; k2:v2" -> [k=v][k2=v2]
-    let style_re = Regex::new(r#"(?i)style="([^"]*)""#)?;
+    let style_re = Regex::new(r#"(?i)(href|class|style|id|title|src|alt|data-[a-z0-9\-_]+|role|rel|type|name)\s*=\s*"([^"]*)""#)?;
     out = style_re
         .replace_all(&out, |caps: &regex::Captures| {
-            let raw = caps.get(1).map(|m| m.as_str()).unwrap_or("");
+            let attr = caps.get(1).map(|m| m.as_str()).unwrap_or("");
+            let raw = caps.get(2).map(|m| m.as_str()).unwrap_or("");
 
-            let items = raw
-                .split(';')
-                .map(str::trim)
-                .filter(|s| !s.is_empty())
-                .filter_map(|pair| {
-                    let mut it = pair.splitn(2, ':');
-                    let key = it.next()?.trim();
-                    let val = it.next()?.trim();
-                    if key.is_empty() || val.is_empty() {
-                        None
-                    } else {
-                        Some((key, val))
-                    }
-                });
+            // Explicitly collect into string slices (&str) instead of owned Strings
+            let items: Vec<(&str, &str)> = match attr.to_ascii_lowercase().as_str() {
+                "style" => raw
+                    .split(';')
+                    .map(str::trim)
+                    .filter(|s| !s.is_empty())
+                    .filter_map(|pair| {
+                        let mut it = pair.splitn(2, ':');
+                        let key = it.next()?.trim();
+                        let val = it.next()?.trim();
+                        if key.is_empty() || val.is_empty() {
+                            None
+                        } else {
+                            Some((key, val))
+                        }
+                    })
+                    .collect(),
+
+                _ => raw
+                    .split_whitespace()
+                    .map(str::trim)
+                    .filter(|s| !s.is_empty())
+                    .map(|v| (attr, v))
+                    .collect(),
+            };
 
             let mut res = String::new();
             for (k, v) in items {

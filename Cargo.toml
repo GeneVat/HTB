@@ -5,6 +5,9 @@ edition = "2024"
 default-run = "HTB"
 
 [[bin]]
+name = "Step0"
+path = "src/Step0.rs"
+[[bin]]
 name = "Step1"
 path = "src/Step1.rs"
 [[bin]]

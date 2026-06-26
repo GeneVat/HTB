@@ -6,7 +6,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     let style_re = Regex::new(r"\[(.*?)\]")?;
 
-    let words = ["html","head","body","main","p","h4"];
+    let words = ["html","head","body","main","h4","nav","id"];
     
     let words_re = Regex::new(&format!(r"({})", words.join("|")))?;
 
@@ -31,7 +31,14 @@ fn main() -> Result<(), Box<dyn Error>> {
     out = out.replace("[/h1","[/size");
     out = out.replace("[/h2","[/size");
     out = out.replace("[/h3","[/size");
+    out = out.replace("href","url");
+    out = out.replace("[a]","");
+    out = out.replace("[/a]","");
+    out = out.replace("[p]","");
+    out = out.replace("[/p]","");
 
-    fs::write("main.bb", out)?;
+    fs::write("main.bb", out.clone())?;
+    fs::write("steps/step4.temp", out.clone())?;
+
     Ok(())
 }

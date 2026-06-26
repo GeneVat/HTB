@@ -1,9 +1,5 @@
 
     
-        [meta] charset="UTF-8"
-[/meta]
-        [meta] content="width=device-width, initial-scale=1.0" name="viewport"
-[/meta]
         [size=180] My First HTML Website
 [/size]
 
@@ -14,20 +10,27 @@
              A simple HTML template example
 
 
-        [nav]
-            [a] href="#about" About
-[/a]
-            [a] href="#services" Services
-[/a]
-            [a] href="#contact" Contact
-[/a]
-[/nav]
+        
+             [url=#about] About
+[/url]
+
+             [url=#services] Services
+[/url]
+
+             [url=#contact] Contact
+[/url]
+
+            - |
+            - |
+
         
             [section]
-                [size=140] id="about" About Us
+                [size=140]  About Us
+
 [/size]
                 
-                    [strong] id="about" HTML5
+                    [strong]  HTML5
+
 [/strong]
                     [This] is a live example of a basic webpage built using
 [/This]
@@ -35,23 +38,30 @@
 
 [/section]
             [section]
-                [size=140] id="services" Our Features
+                [size=140]  Our Features
+
 [/size]
                 [ul]
-                    [li] id="services" Clean and organized semantic structure.
+                    [li]  Clean and organized semantic structure.
+
 [/li]
-                    [li] id="services" Responsive layout for mobile screens.
+                    [li]  Responsive layout for mobile screens.
+
 [/li]
-                    [li] id="services" Easy to customize with your own text.
+                    [li]  Easy to customize with your own text.
+
 [/li]
 [/ul]
 [/section]
             [section]
-                [size=140] id="contact" Contact
+                [size=140]  Contact
+
 [/size]
                 
-                    [a] href="mailtoexample@email.com" id="contact" example@email.com
-[/a]
+                     [url=mailtoexample@email.com]  example@email.com
+
+[/url]
+
                     [Have] questions? Reach out directly via email at
 [/Have]
 

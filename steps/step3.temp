@@ -1,9 +1,5 @@
 [html]
     [head]
-        [meta] charset="UTF-8"
-[/meta]
-        [meta] content="width=device-width, initial-scale=1.0" name="viewport"
-[/meta]
         [title] My First HTML Website
 [/title]
 [/head]
@@ -15,19 +11,26 @@
 [/p]
 [/header]
         [nav]
-            [a] href="#about" About
+            [a] [href=#about] About
+[/href]
 [/a]
-            [a] href="#services" Services
+            [a] [href=#services] Services
+[/href]
 [/a]
-            [a] href="#contact" Contact
+            [a] [href=#contact] Contact
+[/href]
 [/a]
+            - |
+            - |
 [/nav]
         [main]
             [section]
-                [h2] id="about" About Us
+                [h2] [id=about] About Us
+[/id]
 [/h2]
                 [p]
-                    [strong] id="about" HTML5
+                    [strong] [id=about] HTML5
+[/id]
 [/strong]
                     [This] is a live example of a basic webpage built using
 [/This]
@@ -35,22 +38,29 @@
 [/p]
 [/section]
             [section]
-                [h2] id="services" Our Features
+                [h2] [id=services] Our Features
+[/id]
 [/h2]
                 [ul]
-                    [li] id="services" Clean and organized semantic structure.
+                    [li] [id=services] Clean and organized semantic structure.
+[/id]
 [/li]
-                    [li] id="services" Responsive layout for mobile screens.
+                    [li] [id=services] Responsive layout for mobile screens.
+[/id]
 [/li]
-                    [li] id="services" Easy to customize with your own text.
+                    [li] [id=services] Easy to customize with your own text.
+[/id]
 [/li]
 [/ul]
 [/section]
             [section]
-                [h2] id="contact" Contact
+                [h2] [id=contact] Contact
+[/id]
 [/h2]
                 [p]
-                    [a] href="mailtoexample@email.com" id="contact" example@email.com
+                    [a] [href=mailtoexample@email.com] [id=contact] example@email.com
+[/id]
+[/href]
 [/a]
                     [Have] questions? Reach out directly via email at
 [/Have]

@@ -2,8 +2,6 @@
 
 HTB is a command-line tool that converts a subset of HTML into BBCode, suitable for use on nationstates.
 
-To start, run `npm run start` with Node.js installed and then edit the `main.html` file.
-
 ## Tags
 
 Below is a list of supported HTML tags and their BBCode equivalents. Use these tags in your `main.html` file.

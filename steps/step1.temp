@@ -1,7 +1,5 @@
 - html:
     - head:
-        - meta charset="UTF-8"
-        - meta content="width=device-width, initial-scale=1.0" name="viewport"
         - title : My First HTML Website
     - body:
         - header:
@@ -11,6 +9,8 @@
             - a href="#about" : About
             - a href="#services" : Services
             - a href="#contact" : Contact
+            - |
+            - |
         - main:
             - section:
                 - h2 id="about" : About Us

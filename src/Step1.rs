@@ -4,7 +4,7 @@ use std::error::Error;
 use std::fs;
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let path = "main.html";
+    let path = "steps/step0.temp";
     let text = fs::read_to_string(path)?;
     let document = Html::parse_document(&text);
     let root = document.root_element();
