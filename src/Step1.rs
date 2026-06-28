@@ -4,14 +4,15 @@ use std::error::Error;
 use std::fs;
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let path = "steps/step0.temp";
+    let home = std::env::var("HOME").unwrap();
+    let path = format!("{}/.HTB/steps/step0.temp", home);
     let text = fs::read_to_string(path)?;
     let document = Html::parse_document(&text);
     let root = document.root_element();
 
     let lines = process_element(root, 0, &[]);
     let output = lines.join("\n");
-    fs::write("steps/step1.temp", output)?;
+    fs::write(format!("{}/.HTB/steps/step1.temp", home), output)?;
     Ok(())
 }
 

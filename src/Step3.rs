@@ -7,8 +7,9 @@ fn indent_level(line: &str) -> usize {
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let input_path = PathBuf::from("steps/step2.temp");
-    let output_path = PathBuf::from("steps/step3.temp");
+    let home = std::env::var("HOME").unwrap();
+    let input_path = PathBuf::from(format!("{}/.HTB/steps/step2.temp",home));
+    let output_path = PathBuf::from(format!("{}/.HTB/steps/step3.temp",home));
 
     let input = fs::read_to_string(&input_path)?;
 

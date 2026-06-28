@@ -2,11 +2,12 @@ use regex::Regex;
 use std::{error::Error, fs};
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let text = fs::read_to_string("steps/step3.temp")?;
+    let home = std::env::var("HOME").unwrap();
+    let text = fs::read_to_string(format!("{}/.HTB/steps/step3.temp",home))?;
 
     let style_re = Regex::new(r"\[(.*?)\]")?;
 
-    let words = ["html","head","body","main","h4","nav","id"];
+    let words = ["html","head","body","main","h4","nav","id","section","footer","hr","email"];
     
     let words_re = Regex::new(&format!(r"({})", words.join("|")))?;
 
@@ -36,9 +37,13 @@ fn main() -> Result<(), Box<dyn Error>> {
     out = out.replace("[/a]","");
     out = out.replace("[p]","");
     out = out.replace("[/p]","");
+    out = out.replace("ul]","list]");
+    out = out.replace("li]","*]");
+    out = out.replace("[/*]","");
 
     fs::write("main.bb", out.clone())?;
-    fs::write("steps/step4.temp", out.clone())?;
-
+    for entry in fs::read_dir(format!("{}/.HTB/steps", home))? {
+        fs::remove_file(entry?.path())?;
+    }
     Ok(())
 }

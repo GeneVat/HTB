@@ -2,7 +2,8 @@ use regex::Regex;
 use std::{error::Error, fs};
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let text = fs::read_to_string("steps/step1.temp")?;
+    let home = std::env::var("HOME").unwrap();
+    let text = fs::read_to_string(format!("{}/.HTB/steps/step1.temp",home))?;
 
     let mut out: String = text;
 
@@ -74,6 +75,6 @@ fn main() -> Result<(), Box<dyn Error>> {
         .replace(": ", " ")
         .replace(':', "");
 
-    fs::write("steps/step2.temp", out)?;
+    fs::write(format!("{}/.HTB/steps/step2.temp",home), out)?;
     Ok(())
 }
