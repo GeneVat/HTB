@@ -10,6 +10,16 @@ Run:
 - `echo "alias HTB='~/.HTB/Release/HTB'" >> ~/.zshrc` 
 - `source ~/.zshrc`
 
+## How to Build Yourself
+
+### MacOS
+- Download the project
+- Run: `cargo build --release`
+- Go to: `./target/release`
+- Move `HTB`, `Step1`, `Step2`, `Step3`, and `Step4` to `~/.HTB/Release` (Must create those folders)
+- Run:
+    - `echo "alias HTB='~/.HTB/Release/HTB'" >> ~/.zshrc` 
+    - `source ~/.zshrc`
 ## How to Use
 Use:
 `HTB <FileName>`
