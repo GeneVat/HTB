@@ -18,7 +18,7 @@ fn main() -> ExitCode {
     let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
         eprintln!("Error: Please provide a file path.");
-        eprintln!("Usage: cargo run --bin <your_runner_bin> -- <filename>");
+        eprintln!("Usage: HTB <filename>");
         return ExitCode::from(1);
     }
     

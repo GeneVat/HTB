@@ -5,8 +5,6 @@ use std::env;
 fn main() -> Result<(), Box<dyn Error>> {
     let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
-        eprintln!("Error: Please provide a file path.");
-        eprintln!("Usage: cargo run <filename>");
         std::process::exit(1);
     }
     let file_path = &args[1];
